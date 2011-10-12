@@ -1,0 +1,12 @@
+# android-build-related environment variables
+#
+
+###### Sane defaults follow
+
+######
+###### NOTE: The next two are meta-variables.  Look at these closely. You'll probably want to re-set them for your build.
+######
+######
+
+: ${CLOUDSURFER_ROOT:=$HOME/workspace/cloudsurfer-root} # Where the sources are
+: ${DEPLOYMENT_DIR:=/data/deploy}		        # Where build products go.  On bacompiler, this is a separate disk & filesystem.
