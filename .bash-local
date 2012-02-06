@@ -14,15 +14,15 @@ export HISTCONTROL=ignoreboth
 
 # my own aliases
 if [ -f ~/.bash-aliases ]; then
-    . ~/.bash_aliases
+    . ~/.bash-aliases
 fi
 
 if [ -f ~/.bash-functions ]; then
     source ~/.bash-functions
 fi
 
-if [ -f ~/bin/bash_functions ]; then
-    PATH+=:~/bin/bash_functions
+if [ -f ~/bin/bash-functions ]; then
+    PATH+=:~/bin/bash-functions
 fi
 
 if [ -f ~/.bash-env ]; then
