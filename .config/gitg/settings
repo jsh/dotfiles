@@ -1,0 +1,10 @@
+
+[gitg]
+window-state=0
+window-width=800
+window-height=800
+vpaned-main-position=350
+revision-tree-view-position=200
+vpaned-commit-position=450
+hpaned-commit1-position=200
+hpaned-commit2-position=200
