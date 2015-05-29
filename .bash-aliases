@@ -1,1 +1,4 @@
-alias mroe=more
+alias vi=vim
+alias mroe=more  # for Evi
+alias clip='xclip -selection c'
+#alias git=hub
