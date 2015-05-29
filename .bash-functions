@@ -1,26 +1,6 @@
 # functions
 
-# put the current directory into the X window decoration 
-xpwd() {
-  echo -ne "\e]0;${USER}@${HOSTNAME}: ${PWD/$HOME/~}\007"
-}
-
-# set up a pair of prompts -- one for success, one for failure
-export _r="\[\e[01;31m\]"
-export _g="\[\e[01;32m\]"
-export _n="\[\e[0m\]"
-
-prompt() {
-  if [ $? = 0 ]; then
-    PS1="\u@\h:\w${_g}\$${_n} "
-  else
-    PS1="\u@\h:\w${_r}\$${_n} "
-  fi
-  xpwd
-}
-
-export PROMPT_COMMAND=prompt
-
+# job control
 
 cdjob() {
   local d
@@ -30,3 +10,38 @@ cdjob() {
   d=$(jobs $1 | perl -lane 'print "cd $1" if m/.*\(wd: (.*)\).*/')
   test "$d" && eval $d
 }
+
+# starting a git repo
+
+git-startup() {
+  git init ${1:?"usage: $FUNCNAME <dir>"}
+  cd $1
+  git flow init -d
+}
+
+# set up a pair of prompts -- one for success, one for failure
+export _r="\[\e[01;31m\]"
+export _g="\[\e[01;32m\]"
+export _n="\[\e[0m\]"
+
+_success=${_g}'\$'${_n}' '
+_failure=${_r}'\$'${_n}' '
+
+prompt() {
+  case ${1:-normal} in
+    short)  _base='' ;;
+    normal) _base='\u@\h:\W' ;;
+    long)   _base='\u@\h:\w' ;;
+  esac
+}
+
+put_prompt() {
+  if [[ $? == 0 ]]; then
+    PS1=$_base$_success
+  else
+    PS1=$_base$_failure
+  fi
+}
+
+export PROMPT_COMMAND=put_prompt
+prompt

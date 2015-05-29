@@ -1,0 +1,25 @@
+# adjust my search path
+for i in "$HOME/bin"; do
+  fgrep -q $i <<< $PATH || PATH+=:$i
+done
+fgrep -q :: <<< $PATH || grep -q :$ <<< $PATH || PATH+=:
+
+# use my preferred editor
+export EDITOR=/usr/bin/vim
+set -o vi
+
+# add my own locate database
+export LOCATE_PATH=~/var/mlocate.db
+
+# don't ^D to logout
+set -o ignoreeof
+
+# customize behavior of cd
+export CDPATH+=":~"; set -P
+shopt -s cdspell dirspell globstar
+
+# keep lots of history
+export HISTFILESIZE=100000000
+export HISTSIZE=100000
+export HISTCONTROL=ignoreboth
+shopt -s histappend

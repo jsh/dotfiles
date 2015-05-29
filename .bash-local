@@ -1,54 +1,6 @@
-# my stuff
-
-# history
-
-## keep lots of history
-export HISTFILESIZE=100000000
-export HISTSIZE=100000
-
-## don't overwrite the history of other sessions currently in progress
-shopt -s histappend
-
-## don't put duplicate lines in the history and ignore same sucessive entries.
-export HISTCONTROL=ignoreboth
-
-# my own aliases
-if [ -f ~/.bash-aliases ]; then
-    . ~/.bash-aliases
-fi
-
-if [ -f ~/.bash-functions ]; then
-    source ~/.bash-functions
-fi
-
-if [ -f ~/bin/bash-functions ]; then
-    PATH+=:~/bin/bash-functions
-fi
-
-if [ -f ~/.bash-env ]; then
-    source ~/.bash-env
-fi
-
-if [ -f ~/.bash-android ]; then
-    source ~/.bash-android
-fi
-
-shopt -s cdspell dirspell globstar
-set -o vi
-set -o ignoreeof
-
-CDPATH+=".:~"; set -P
-export WORKSPACE=$HOME/workspace
-export PYTHONPATH=$WORKSPACE/pint/pylibs
-PYTHONPATH+=:$WORKSPACE/cloudsurfer-root/test-scripts/pylibs
-PYTHONPATH+=:$WORKSPACE/cloudsurfer-root/test-scripts/testcases
-export EDITOR=/usr/bin/vim
-export MANPATH+=:~/man
-#export PAGER="/bin/sh -c \"col -b | view -c 'set ft=man nomod nolist' -\"" 
-
-# make less more friendly for non-text input files, see lesspipe(1)
-if [ -x /usr/bin/lesspipe ]; then
-  eval "$(lesspipe)"
-fi
-
-clear
+# local mods
+for i in variables aliases functions; do
+  if [ -r ~/.bash-$i ]; then
+    source ~/.bash-$i
+  fi
+done
