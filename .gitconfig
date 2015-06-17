@@ -51,6 +51,3 @@
 	default=simple
 [rerere]
 	enabled = true
-[user]
-	email = jhaemer@gogoair.com
-	name = Jeff Haemer
