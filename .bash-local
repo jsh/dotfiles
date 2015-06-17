@@ -4,3 +4,5 @@ for i in variables aliases functions; do
     source ~/.bash-$i
   fi
 done
+
+config-git-user $LOGNAME
