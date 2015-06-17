@@ -22,9 +22,13 @@
 	ui = auto
 [core]
 	autocrlf = input
+	excludesfile = ~/.gitignore
 	whitespace = trailing-space,space-before-tab
 [credential]
 	helper = cache --timeout=3600
+	# helper = gnome-keyring
+[fetch]
+	prune = 1
 [filter "lfs"]
 	clean = git lfs clean %f
 	required = true
