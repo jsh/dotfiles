@@ -55,3 +55,7 @@ autocmd FileType make set noexpandtab
 " set incsearch"
 set nocompatible
 set paste
+
+nmap BB :diffg BASE<CR>
+nmap LL :diffg LOCAL<CR>
+nmap RR :diffg REMOTE<CR>
