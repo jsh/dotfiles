@@ -1,5 +1,6 @@
 #!/bin/bash -eu
 
+cd
 sudo apt-get -y update dist-upgrade autoremove
 
 unset pkgs
@@ -21,17 +22,22 @@ git config --global user.email "jeffrey.haemer@gmail.com"
 ssh-keygen
 # now copy the public key to GitHub
 
+# repos I'll want
 for i in jsh/{git-scratch,home} git/git; do
-  [ -d $(basename $i) ] || git clone $i
+  [ -d $(basename $i) ] || git clone git@github.com:$i
 done
 
-for i in home/.b* home/.v*; do
-  ln -f $i $HOME
-done
-
-make -C git prefix=/usr all doc info
-sudo make -C git prefix=/usr install install-doc install-html install-info 
-
+# install personal git tools
 mkdir -p ~/bin
 ln -f git-scratch/git-{addfile,scratch} $_
 
+# use personal config
+for i in home/.{b,gitc,v}*; do
+  ln -f $i $HOME
+done
+
+# build and install newest official git release
+git -C git checkout $(git -C git tag -l | grep -v rc | tail -1)
+make -C git prefix=/usr all doc info
+sudo make -C git prefix=/usr install install-doc install-html install-info 
+mkdir -p ~/.config/git
