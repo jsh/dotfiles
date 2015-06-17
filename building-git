@@ -13,6 +13,7 @@ pkgs+=libexpat1-dev
 pkgs+=libssl-dev
 pkgs+=make
 pkgs+=openssl
+pkgs+=tree
 sudo apt-get -y $pkgs
 git config --global user.name "Jeffrey S. Haemer"
 git config --global user.email "jeffrey.haemer@gmail.com"
