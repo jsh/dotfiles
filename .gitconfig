@@ -24,8 +24,8 @@
 	serve   = !git daemon --reuseaddr --verbose  --base-path=. --export-all ./.git # git scm wiki
 	whatis  = show -s --pretty='tformat:%h (%s, %ad)' --date=short # Junio Hamano
 	whois   = "!sh -c 'git log -i -1 --pretty=\"format:%an <%ae>\n\" --author=\"$1\"' -" # Junio Hamano
-#[push]
-#  default=simple
+[push]
+	default=simple
 [pull]
 	rebase = true
 [core]
