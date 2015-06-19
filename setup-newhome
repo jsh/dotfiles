@@ -1,21 +1,24 @@
 #!/bin/bash -eu
 
 cd
-sudo apt-get -y update dist-upgrade autoremove
+sudo apt-get -y update > /dev/null
+sudo apt-get -y dist-upgrade
+sudo apt-get -y autoremove
 
 unset pkgs
-pkgs+=asciidoc
-pkgs+=docbook2x
-pkgs+=gcc
-pkgs+=gettext
-pkgs+=git
-pkgs+=libcurl4-openssl-dev
-pkgs+=libexpat1-dev
-pkgs+=libssl-dev
-pkgs+=make
-pkgs+=openssl
-pkgs+=tree
-sudo apt-get -y $pkgs
+pkgs+=' asciidoc'
+pkgs+=' docbook2x'
+pkgs+=' gcc'
+pkgs+=' gettext'
+pkgs+=' git '
+pkgs+=' libcurl4-openssl-dev'
+pkgs+=' libexpat1-dev'
+pkgs+=' libssl-dev'
+pkgs+=' make'
+pkgs+=' openssl'
+pkgs+=' tree'
+
+sudo apt-get -y install $pkgs
 git config --global user.name "Jeffrey S. Haemer"
 git config --global user.email "jeffrey.haemer@gmail.com"
 
