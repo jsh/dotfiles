@@ -5,4 +5,4 @@ for i in variables aliases functions; do
   fi
 done
 
-config-git-user $LOGNAME
+git-useradd $LOGNAME

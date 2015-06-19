@@ -46,7 +46,7 @@ put_prompt() {
 export PROMPT_COMMAND=put_prompt
 prompt
 
-config-git-user() {
+git-useradd() {
   if [[ "${1:-}" == "jhaemer" ]]; then
     git config --global user.name "Jeff Haemer"
     git config --global user.email "jhaemer@gogoair.com"

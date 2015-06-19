@@ -8,7 +8,7 @@ pkgs+=asciidoc
 pkgs+=docbook2x
 pkgs+=gcc
 pkgs+=gettext
-pkgs+=git 
+pkgs+=git
 pkgs+=libcurl4-openssl-dev
 pkgs+=libexpat1-dev
 pkgs+=libssl-dev
@@ -19,11 +19,12 @@ sudo apt-get -y $pkgs
 git config --global user.name "Jeffrey S. Haemer"
 git config --global user.email "jeffrey.haemer@gmail.com"
 
-ssh-keygen
+#[ -f $HOME/.ssh/id_rsa.pub ] || ssh-keygen
 # now copy the public key to GitHub
 
 # repos I'll want
-for i in jsh/{git-scratch,home} git/git; do
+mkdir -p ~/src; cd $_
+for i in jsh/{dotfiles,git-scratch} git/git; do
   [ -d $(basename $i) ] || git clone git@github.com:$i
 done
 
@@ -32,12 +33,11 @@ mkdir -p ~/bin
 ln -f git-scratch/git-{addfile,scratch} $_
 
 # use personal config
-for i in home/.{b,gitc,v}*; do
+for i in dotfiles/.{b,gitc,v}*; do
   ln -f $i $HOME
 done
 
 # build and install newest official git release
 git -C git checkout $(git -C git tag -l | grep -v rc | tail -1)
 make -C git prefix=/usr all doc info
-sudo make -C git prefix=/usr install install-doc install-html install-info 
-mkdir -p ~/.config/git
+sudo make -C git prefix=/usr install install-doc install-html install-info

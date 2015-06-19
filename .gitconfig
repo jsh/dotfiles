@@ -21,30 +21,41 @@
 [color]
 	ui = auto
 [core]
+	attributesfile = ~/.gitattributes
 	autocrlf = input
 	excludesfile = ~/.gitignore
 	whitespace = trailing-space,space-before-tab
 [credential]
 	helper = cache --timeout=3600
 	# helper = gnome-keyring
+[diff]
+	tool = vimdiff
+[diff "xml"]
+	textconv = xmllint --format --recover
 [fetch]
 	prune = 1
 [filter "lfs"]
 	clean = git lfs clean %f
 	required = true
 	smudge = git lfs smudge %f
+[gist]
+	browse = true
 [help]
 	autocorrect = 1
 [http]
 	sslfverify = false
 [include]
-	path = ~/.gitconfig.local
+	path = ~/.gitconfig-local
 #[lfs]
 #	url = "http://localhost:9999/tmp/scratch.git/info"
 [merge]
 	conflictstyle = diff3
 	prompt = false
 	tool = vimdiff
+[mergetool]
+	prompt = false
+	keepBackup = false
+	keepTemporaries = false
 [pull]
 	rebase = true
 [push]
