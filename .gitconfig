@@ -1,7 +1,7 @@
 [alias]
 	aliases = config --get-regexp 'alias.*' # Jonas Gorauskas
 	branchname = rev-parse --abbrev-ref HEAD # Rob Miller
-	caa     = commit -a --amend -C HEAD # Nicola Paolucci
+	caa     = commit --all --amend --reuse-message=HEAD --date=\"$(date)\" # Nicola Paolucci and Mike McQuaid
 	ec      = config --global -e # Phil Haack
 	empty-tree-sha1 = hash-object -t tree /dev/null # use with git diff --check, git scm wiki
 	git     = rev-parse --git-dir
