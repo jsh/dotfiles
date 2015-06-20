@@ -60,5 +60,5 @@
 	rebase = true
 [push]
 	default=simple
-[rerere]
-	enabled = true
+#[rerere]
+#	enabled = true
