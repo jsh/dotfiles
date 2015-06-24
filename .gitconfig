@@ -62,5 +62,8 @@
 	default=simple
 #[rerere]
 #	enabled = true
+[tag]
+	sort = v:refname
 [versionsort]
+	prereleaseSuffix = -pre
 	prereleaseSuffix = -rc
