@@ -30,7 +30,7 @@
 	safecrlf = true
 	whitespace = trailing-space,space-before-tab
 [credential]
-	helper = cache --timeout=3600
+	helper = cache --timeout=900
 	# helper = gnome-keyring
 [diff]
 	tool = vimdiff
@@ -39,9 +39,9 @@
 [fetch]
 	prune = 1
 [filter "lfs"]
-	clean = git lfs clean %f
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
 	required = true
-	smudge = git lfs smudge %f
 [gist]
 	browse = true
 [help]
@@ -73,3 +73,10 @@
 [versionsort]
 	prereleaseSuffix = -pre
 	prereleaseSuffix = -rc
+[user]
+	name = Jeff Haemer
+	email = jhaemer@gogoair.com
+[include]
+  path = ~/.gitlfs
+[credential]
+	helper = store
