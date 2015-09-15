@@ -32,6 +32,7 @@ prompt() {
     short)  _base='' ;;
     normal) _base='\u@\h:\W' ;;
     long)   _base='\u@\h:\w' ;;
+    *) echo 'usage: prompt [short|normal|long]' >&2 ;;
   esac
 }
 
