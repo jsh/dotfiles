@@ -2,4 +2,4 @@ alias clip='xclip -selection c'
 #alias git=hub
 alias mroe=more  # for Evi
 alias view='vim -R'
-alias vi=vim
+type -p vim && alias vi=vim
