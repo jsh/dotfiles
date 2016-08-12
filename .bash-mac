@@ -1,0 +1,20 @@
+if [[ $(uname -s) != Darwin ]]; then
+	return
+fi
+
+alias ls='ls -G'
+alias tree='tree -C'
+tac() {
+  tail -r
+}
+
+
+if [ -f $(/usr/local/bin/brew --prefix)/etc/bash_completion ]; then
+  . $(/usr/local/bin/brew --prefix)/etc/bash_completion
+fi
+
+# permit CUPS web interface
+cupsctl WebInterface=yes
+
+export LSCOLORS='ExGxBxDxCxEgEdxbxgxcxd'
+pushpath PYTHONPATH /usr/local/lib/python2.7/site-packages

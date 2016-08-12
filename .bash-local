@@ -1,5 +1,5 @@
 # local mods
-for i in variables aliases functions golang; do
+for i in variables aliases functions golang mac; do
   if [ -r ~/.bash-$i ]; then
     source ~/.bash-$i
   fi

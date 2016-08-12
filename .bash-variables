@@ -1,5 +1,15 @@
+# manipulating paths
+
+pushpath() {
+  path=$1
+  fgrep -q $2 <<< ${!path} || eval $path+=:$2
+}
+
 # adjust my search path
-fgrep -q :: <<< $PATH || grep -q :$ <<< $PATH || PATH+=:
+
+for i in :: $GOPATH/bin /usr/local/sbin; do
+  pushpath PATH $i
+done
 
 # use my preferred editor
 export EDITOR=/usr/bin/vim
@@ -13,14 +23,17 @@ set -o vi
 set -o ignoreeof
 
 # customize behavior of cd
-fgrep -q ':~' <<< $CDPATH || CDPATH+=':~'
-fgrep -q ':~/Projects' <<< $CDPATH || CDPATH+=':~/Projects'
+for i in ~ ~/Projects; do
+  pushpath CDPATH $i
+done
 set -P
 
-shopt -s cdspell dirspell globstar
+shopt -s cdspell checkwinsize dirspell globstar
 
 # keep lots of history
 export HISTFILESIZE=100000000
 export HISTSIZE=100000
 export HISTCONTROL=ignoreboth
 shopt -s histappend
+
+export ANSIBLE_COW_SELECTION=random
