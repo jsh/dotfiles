@@ -28,6 +28,7 @@ for i in ~ ~/Projects; do
 done
 set -P
 
+# do other shell trickery
 shopt -s cdspell checkwinsize dirspell globstar
 
 # keep lots of history
@@ -36,4 +37,5 @@ export HISTSIZE=100000
 export HISTCONTROL=ignoreboth
 shopt -s histappend
 
+# make ansible funny
 export ANSIBLE_COW_SELECTION=random

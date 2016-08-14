@@ -13,12 +13,6 @@ cdjob() {
 
 # starting a git repo
 
-git-startup() {
-  git init ${1:?"usage: $FUNCNAME <dir>"}
-  cd $1
-  git flow init -d
-}
-
 # set up a pair of prompts -- one for success, one for failure
 export _r="\[\e[01;31m\]"
 export _g="\[\e[01;32m\]"
