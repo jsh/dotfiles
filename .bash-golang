@@ -1,0 +1,2 @@
+export GOPATH=~/Projects/go
+CDPATH+=:$GOPATH/src/github.com/$LOGNAME
