@@ -1,7 +1,7 @@
 alias clip='xclip -selection c'
 #alias git=hub
 alias mroe=more  # for Evi
-alias view='vim -R'
 alias pusdh=pushd
 alias pudsh=pushd
+alias view='vim -R'
 type -p vim >/dev/null && alias vi=vim
