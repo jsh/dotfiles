@@ -3,5 +3,6 @@ alias clip='xclip -selection c'
 alias mroe=more  # for Evi
 alias pusdh=pushd
 alias pudsh=pushd
+alias tree='tree -C'
 alias view='vim -R'
 type -p vim >/dev/null && alias vi=vim
