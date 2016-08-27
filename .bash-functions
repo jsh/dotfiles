@@ -2,6 +2,11 @@
 
 # job control
 
+
+term_title() {
+    printf "\033]0;%s\007" $1
+}
+
 cdjob() {
   local d
 
@@ -37,6 +42,7 @@ put_prompt() {
   else
     PS1=$_base$_failure
   fi
+  term_title $PWD
 }
 
 export PROMPT_COMMAND=put_prompt
