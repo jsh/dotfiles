@@ -29,7 +29,8 @@ done
 set -P
 
 # do other shell trickery
-shopt -s cdspell checkwinsize dirspell globstar
+#shopt -s cdspell checkwinsize dirspell globstar # where are dirspell and globstar?
+shopt -s cdspell checkwinsize
 
 # keep lots of history
 export HISTFILESIZE=100000000

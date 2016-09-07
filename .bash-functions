@@ -52,6 +52,9 @@ git-useradd() {
   if [[ "${1:-}" == "jsh" ]]; then
     git config --global user.name "Jeffrey S. Haemer"
     git config --global user.email "jeffrey.haemer@gmail.com"
+  elif [[ "${1:-}" == "jshaemer" ]]; then
+    git config --global user.name "Jeff Haemer"
+    git config --global user.email "jshaemer@twitter.com"
   else
     echo "Unknown user '$1'" >&2
   fi

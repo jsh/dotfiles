@@ -9,8 +9,8 @@ tac() {
 }
 
 
-if [ -f $(/usr/local/bin/brew --prefix)/etc/bash_completion ]; then
-  . $(/usr/local/bin/brew --prefix)/etc/bash_completion
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . $(brew --prefix)/etc/bash_completion
 fi
 
 # permit CUPS web interface
