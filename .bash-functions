@@ -45,8 +45,8 @@ put_prompt() {
   term_title $PWD
 }
 
-export PROMPT_COMMAND=put_prompt
-prompt
+#export PROMPT_COMMAND=put_prompt
+#prompt
 
 git-useradd() {
   if [[ "${1:-}" == "jsh" ]]; then
