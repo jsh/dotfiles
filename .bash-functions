@@ -49,10 +49,17 @@ export PROMPT_COMMAND=put_prompt
 prompt
 
 git-useradd() {
-  if [[ "${1:-}" == "jsh" ]]; then
-    git config --global user.name "Jeffrey S. Haemer"
-    git config --global user.email "jeffrey.haemer@gmail.com"
-  else
-    echo "Unknown user '$1'" >&2
-  fi
+  case "${1:-}" in
+    jsh)
+      git config --global user.name "Jeffrey S. Haemer"
+      git config --global user.email "jeffrey.haemer@gmail.com"
+      ;;
+    jshaemer)
+      git config --global user.name "Jeffrey S. Haemer"
+      git config --global user.email "jeffrey.haemer@gmail.com"
+      ;;
+    *)   
+      echo "Unknown user '$1'" >&2
+      ;;
+  esac
 }

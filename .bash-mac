@@ -9,12 +9,12 @@ tac() {
 }
 
 
-if [ -f $(/usr/local/bin/brew --prefix)/etc/bash_completion ]; then
-  . $(/usr/local/bin/brew --prefix)/etc/bash_completion
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . $(brew --prefix)/etc/bash_completion
 fi
 
 # permit CUPS web interface
 cupsctl WebInterface=yes
 
 export LSCOLORS='ExGxBxDxCxEgEdxbxgxcxd'
-pushpath PYTHONPATH /usr/local/lib/python2.7/site-packages
+#pushpath PYTHONPATH /usr/local/lib/python2.7/site-packages
