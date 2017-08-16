@@ -27,12 +27,21 @@ _success=${_g}'\$'${_n}' '
 _failure=${_r}'\$'${_n}' '
 
 prompt() {
-  case ${1:-normal} in
+  if ! [[ "${1:-}" ]]; then
+    echo $prompt_type
+    return 0
+  fi
+  oprompt_type=$prompt_type
+  prompt_type=$1
+  case $prompt_type in
     short)  _base='' ;;
     normal) _base='\u@\h:\W' ;;
     long)   _base='\u@\h:\w' ;;
     GutH)   _base='\w' ;;
-    *) echo 'usage: prompt [short|normal|long|GutH]' >&2 ;;
+    time)   _base='[\t] ' ;;
+    *) echo 'usage: prompt [short|normal|long|GutH|time]' >&2
+       prompt_type=$oprompt_type
+      ;;
   esac
 }
 
@@ -46,7 +55,7 @@ put_prompt() {
 }
 
 export PROMPT_COMMAND=put_prompt
-prompt
+prompt normal
 
 git-useradd() {
   case "${1:-}" in
