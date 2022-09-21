@@ -1,8 +1,13 @@
-alias clip='xclip -selection c'
-#alias git=hub
 alias mroe=more  # for Evi
-alias pusdh=pushd
-alias pudsh=pushd
-alias tree='tree -C'
-alias view='vim -R'
-type -p vim >/dev/null && alias vi=vim
+
+which xclip > /dev/null && alias clip='xclip -selection c'
+which tree > /dev/null && alias tree='tree -C'
+if which vim > /dev/null; then
+	cmp -s $(which vi) $(which vim) || alias vi=vim
+fi
+which view > /dev/null || alias view='vi -R'
+
+# specialized stuff
+alias isort='isort --profile black'
+alias clang10='docker start clang10; docker exec -it clang10 /bin/bash'
+alias gcc9='docker start gcc9; docker exec -it gcc9 /bin/bash'

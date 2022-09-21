@@ -7,9 +7,10 @@ pushpath() {
 
 # adjust my search path
 
-for i in :: $GOPATH/bin /usr/local/sbin; do
-  pushpath PATH $i
+for dir in /usr/local/sbin $HOME/bin; do
+  [ -d $dir ] && pushpath PATH $dir
 done
+pushpath PATH ::
 
 # use my preferred editor
 export EDITOR=/usr/bin/vim
@@ -26,7 +27,7 @@ set -o vi
 set -o ignoreeof
 
 # customize behavior of cd
-for i in ~ ~/Projects; do
+for i in ~ ~/Projects ~/Digs ~/Desktop ~/Desktop/Python; do
   pushpath CDPATH $i
 done
 set -P
@@ -43,5 +44,7 @@ shopt -s histappend
 # make ansible funny
 export ANSIBLE_COW_SELECTION=random
 
-# make Python happy
-export PYTHONPATH=~/anaconda/lib/python2.7/site-packages/
+# less shouldn't page if < 1 page.
+export LESS="-eRFX $LESS"
+export LC_ALL='en_US.UTF-8'
+export LANG='en_US.UTF-8'

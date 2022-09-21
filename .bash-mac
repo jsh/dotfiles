@@ -2,23 +2,20 @@ if [[ $(uname -s) != Darwin ]]; then
 	return
 fi
 
-#PATH+=:/opt/twitter/bin
-
 alias ls='ls -G'
 alias tree='tree -C'
 tac() {
   tail -r
 }
+alias realpath="python -c 'import os, sys; print os.path.realpath(sys.argv[1])'"
 
-
-_brew_completion=$(which brew)/etc/bash_completion
+brew=$(which brew)
+_brew_completion=$($brew --prefix)/etc/bash_completion
 if [ -f $_brew_completion ]; then
-  . $_brew_completion
+  source $_brew_completion
 fi
 
 # permit CUPS web interface
 cupsctl WebInterface=yes
 
 export LSCOLORS='ExGxBxDxCxEgEdxbxgxcxd'
-#pushpath PYTHONPATH /usr/local/lib/python2.7/site-packages
-PATH+=:~/Library/Python/2.7/bin

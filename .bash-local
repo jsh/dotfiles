@@ -1,8 +1,6 @@
 # local mods
-for i in variables aliases functions golang mac; do
+for i in variables aliases functions mac; do
   if [ -r ~/.bash-$i ]; then
     source ~/.bash-$i
   fi
 done
-
-git-useradd $LOGNAME

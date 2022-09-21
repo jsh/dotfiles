@@ -1,11 +1,10 @@
 # functions
 
-# job control
-
-
 term_title() {
     printf "\033]0;%s\007" $1
 }
+
+# job control
 
 cdjob() {
   local d
@@ -16,7 +15,27 @@ cdjob() {
   test "$d" && eval $d
 }
 
-# starting a git repo
+# for new git installations
+
+git-useradd() {
+  case "${1:-}" in
+    jsh)
+      git config --global user.name "Jeffrey S. Haemer"
+      git config --global user.email "jeffrey.haemer@gmail.com"
+      ;;
+    *)   
+      echo "Unknown user '$1'" >&2
+      ;;
+  esac
+}
+
+pylint() {
+    command pylint -rn $* | sort -t: -k2 -n -r
+}
+
+return
+
+# What follows is prompt customization, which may not be something you want.
 
 # set up a pair of prompts -- one for success, one for failure
 export _r="\[\e[01;31m\]"
@@ -39,7 +58,8 @@ prompt() {
     long)   _base='\u@\h:\w' ;;
     GutH)   _base='\w' ;;
     time)   _base='[\t] ' ;;
-    *) echo 'usage: prompt [short|normal|long|GutH|time]' >&2
+	off)     unset PROMPT_COMMAND
+    *) echo 'usage: prompt [short|normal|long|GutH|time|off]' >&2
        prompt_type=$oprompt_type
       ;;
   esac
@@ -56,19 +76,3 @@ put_prompt() {
 
 export PROMPT_COMMAND=put_prompt
 prompt normal
-
-git-useradd() {
-  case "${1:-}" in
-    jsh)
-      git config --global user.name "Jeffrey S. Haemer"
-      git config --global user.email "jeffrey.haemer@gmail.com"
-      ;;
-    jshaemer)
-      git config --global user.name "Jeffrey S. Haemer"
-      git config --global user.email "jeffrey.haemer@gmail.com"
-      ;;
-    *)   
-      echo "Unknown user '$1'" >&2
-      ;;
-  esac
-}
